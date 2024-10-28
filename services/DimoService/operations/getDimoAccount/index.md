@@ -10,7 +10,6 @@
 |Responsable|Historia de usuario|Descripción del cambio|
 |-|-|-|
 |exbhgarcia|[86b1x64g2](https://app.clickup.com/t/86b1x64g2)|Se adiciona la operación al servicio|
-||||
 
 ---
 
@@ -33,7 +32,6 @@
 |V/C|Indica si es variable o constante|
 |N/A|No aplica|
 |N/E|No especificado|
-|||
 
 
 ## Request Body
@@ -50,14 +48,13 @@
 | Campo | Tipo | M/O | L/Mi | L/Ma | V/C |
 |-|:-:|:-:|:-:|:-:|:-:|
 |*getDimoAccountRequestBO*|*GetDimoAccountRequestBOObject*|*M*|*1*|*1*|*V*|
-|||||||
 
 * ### GetDimoAccountRequestBOObject
 | Campo | Tipo | M/O | L/Mi | L/Ma | V/C |
 |-|:-:|:-:|:-:|:-:|:-:|
 |*applicationId*|*String*|*M*|*1*|*255*|*V*|
 |*cellphoneNumber*|*String*|*M*|*10*|*10*|*V*|
-|||||||
+
 
 ---
 
@@ -85,7 +82,6 @@
 | Campo | Tipo | M/O | L/Mi | L/Ma | V/C |
 |-|:-:|:-:|:-:|:-:|:-:|
 |*getDimoAccountResponseBO*|*GetDimoAccountResponseBOObject*|*M*|*1*|*1*|*V*|
-|||||||
 
 * ### GetDimoAccountResponseBOObject
 | Campo | Tipo | M/O | L/Mi | L/Ma | V/C |
@@ -94,7 +90,6 @@
 |*code*|*String*|*M*|*3*|*3*|*V*|
 |*response*|*String*|*M*|*1*|*255*|*V*|
 |*data*|*DataObject*|*M*|*1*|*1*|*V*|
-|||||||
 
 * ### DataObject
 | Campo | Tipo | M/O | L/Mi | L/Ma | V/C |
@@ -106,7 +101,6 @@
 |*claveSPEI*|*String*|*M*|*1*|*255*|*V*|
 |*rfc*|*String*|*M*|*1*|*255*|*V*|
 |*folioPet*|*String*|*M*|*1*|*255*|*V*|
-|||||||
 
 ---
 
@@ -115,7 +109,6 @@
 |-|-|
 |C|Transacción exitosa|
 |E|Transacción errónea|
-|||
 
 ---
 ## Códigos de respuesta
@@ -124,7 +117,6 @@
 |200|Transacción exitosa|
 |301|Solicitud con errores|
 |500|Error interno|
-|||
 
 ---
 
@@ -135,7 +127,6 @@
 |Desarrollo|https://apic.consubanco.com/csb/dev/dimo-service/getDimoAccount|    
 |Calidad|https://apic.consubanco.com/csb/qa/dimo-service/getDimoAccount|
 |Producción|https://apic.consubanco.com/csb/prd/dimo-service/getDimoAccount|
-|||
 
 ---
 
@@ -156,14 +147,12 @@ curl --location 'https://apic.consubanco.com/csb/dev/dimo-service/getDimoAccount
 |Componente|Paquete/Clase|Método|
 |-|-|-|
 |int-esb-rest-services-mdw|com.consubanco.rest.dimo.impl.DimoServicesImpl|getDimoAccount|
-||||
 
 ---
 ## Componentes externos relacionados
 |Tipo|Método|URL|Headers|
 |-|-|-|-|
 |REST|POST|http://csbsamdint1.consupago.com:9080/karpaydm/api/banxico/consulta|X-API-KEY<br>X-API-SECRET|
-|||||
 
 ---
 
