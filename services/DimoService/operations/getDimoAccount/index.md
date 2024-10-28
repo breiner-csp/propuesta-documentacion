@@ -15,7 +15,7 @@
 
 
 ## Diagrama de componentes
-Imagen
+![Diagrama de componentes](./img/components.png)
 
 ---
 
