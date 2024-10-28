@@ -47,13 +47,13 @@
 * ### Request Body
 | Campo | Tipo | M/O | L/Mi | L/Ma | V/C |
 |-|:-:|:-:|:-:|:-:|:-:|
-|*getDimoAccountRequestBO*|*GetDimoAccountRequestBOObject*|*M*|*1*|*1*|*V*|
+|getDimoAccountRequestBO|GetDimoAccountRequestBOObject|M|1|1|V|
 
 * ### GetDimoAccountRequestBOObject
 | Campo | Tipo | M/O | L/Mi | L/Ma | V/C |
 |-|:-:|:-:|:-:|:-:|:-:|
-|*applicationId*|*String*|*M*|*1*|*255*|*V*|
-|*cellphoneNumber*|*String*|*M*|*10*|*10*|*V*|
+|applicationId|String|M|1|255|V|
+|cellphoneNumber|String|M|10|10|V|
 
 
 ---
@@ -81,26 +81,26 @@
 * ### Response Body
 | Campo | Tipo | M/O | L/Mi | L/Ma | V/C |
 |-|:-:|:-:|:-:|:-:|:-:|
-|*getDimoAccountResponseBO*|*GetDimoAccountResponseBOObject*|*M*|*1*|*1*|*V*|
+|getDimoAccountResponseBO|GetDimoAccountResponseBOObject|M|1|1|V|
 
 * ### GetDimoAccountResponseBOObject
 | Campo | Tipo | M/O | L/Mi | L/Ma | V/C |
 |-|:-:|:-:|:-:|:-:|:-:|
-|*status*|*String*|*M*|*1*|*1*|*V*|
-|*code*|*String*|*M*|*3*|*3*|*V*|
-|*response*|*String*|*M*|*1*|*255*|*V*|
-|*data*|*DataObject*|*M*|*1*|*1*|*V*|
+|status|String|M|1|1|V|
+|code|String|M|3|3|V|
+|response|String|M|1|255|V|
+|data|DataObject|M|1|1|V|
 
 * ### DataObject
 | Campo | Tipo | M/O | L/Mi | L/Ma | V/C |
 |-|:-:|:-:|:-:|:-:|:-:|
-|*recordFound*|*Boolean*|*M*|*1*|*N/A*|*V*|
-|*maskedCustomerName*|*String*|*M*|*1*|*255*|*V*|
-|*accountType*|*String*|*M*|*1*|*2*|*V*|
-|*accountNumber*|*String*|*M*|*18*|*18*|*V*|
-|*claveSPEI*|*String*|*M*|*1*|*255*|*V*|
-|*rfc*|*String*|*M*|*1*|*255*|*V*|
-|*folioPet*|*String*|*M*|*1*|*255*|*V*|
+|recordFound|Boolean|M|1|N/A|V|
+|maskedCustomerName|String|M|1|255|V|
+|accountType|String|M|1|2|V|
+|accountNumber|String|M|18|18|V|
+|claveSPEI|String|M|1|255|V|
+|rfc|String|M|1|255|V|
+|folioPet|String|M|1|255|V|
 
 ---
 
