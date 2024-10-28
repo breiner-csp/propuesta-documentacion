@@ -59,10 +59,18 @@
 ---
 
 ## Estados de respuesta
+|Estado|Descripción|
+|-|-|
+|C|Transacción exitosa|
+|E|Transacción errónea|
 
 ---
 ## Códigos de respuesta
-
+|Código|Descripción|
+|-|-|
+|200|Transacción exitosa|
+|301|Solicitud con errores|
+|500|Error interno|
 
 ---
 
