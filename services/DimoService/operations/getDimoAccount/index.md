@@ -53,7 +53,7 @@
   }
 }
 ```
-## Especificación de objetos y atributos del Request
+## Especificación de objetos y atributos del Response
 
 
 ---
@@ -68,16 +68,38 @@
 
 
 ## URL de API por ambiente
+|Ambiente|URL|
+|-|-|
+|Desarrollo|https://apic.consubanco.com/csb/dev/dimo-service/getDimoAccount|    
+|Calidad|https://apic.consubanco.com/csb/qa/dimo-service/getDimoAccount|
+|Producción|https://apic.consubanco.com/csb/prd/dimo-service/getDimoAccount|
+
 ---
 
 
 ## Ejemplo de consumo del API - cURL
+```
+curl --location 'https://apic.consubanco.com/csb/dev/dimo-service/getDimoAccount' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'X-IBM-Client-Id: 1045c7b96ff237918538c15ffecbc8dd' \
+--header 'Cookie: 0f64ea607ea127be876814b5b38b0d94=c6c8f20ec97961f1e06618f4e1fd07e1' \
+--data 'REPLACE_REQUEST_BODY'
+```
 ---
 
 
 ## Componentes de integración relacionados
+|Componente|Paquete/Clase|Método|
+|-|-|-|
+|int-esb-rest-services-mdw|com.consubanco.rest.dimo.impl.DimoServicesImpl|getDimoAccount|
+
 ---
 ## Componentes externos relacionados
+|Tipo|Método|URL|Headers|
+|-|-|-|-|
+|REST|POST|http://csbsamdint1.consupago.com:9080/karpaydm/api/banxico/consulta|X-API-KEY<br>X-API-SECRET|
+
 ---
 
 ## Mapeos
@@ -85,3 +107,5 @@
 ![Request a praxis](./img/map-request.png)
 ## Response Praxis ---> Integración
 ![Request a praxis](./img/map-response.png)
+
+---
