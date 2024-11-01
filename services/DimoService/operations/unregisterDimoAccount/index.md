@@ -53,7 +53,7 @@
 | Campo | Tipo | M/O | L/Mi | L/Ma | V/C |
 |-|:-:|:-:|:-:|:-:|:-:|
 |applicationId|String|M|1|255|V|
-|cellphoneNumber|String|M|1|255|V|
+|cellphoneNumber|String|M|10|10|V|
 
 
 ---

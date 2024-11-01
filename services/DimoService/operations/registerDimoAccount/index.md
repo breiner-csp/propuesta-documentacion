@@ -58,12 +58,12 @@
 | Campo | Tipo | M/O | L/Mi | L/Ma | V/C |
 |-|:-:|:-:|:-:|:-:|:-:|
 |applicationId|String|M|1|255|V|
-|cellphoneNumber|String|M|1|255|V|
+|cellphoneNumber|String|M|10|10|V|
 |accountType|String|M|1|255|V|
-|accountCLABE|String|M|1|255|V|
+|accountCLABE|String|M|18|18|V|
 |maskedCustomerName|String|M|1|255|V|
 |rfc|String|M|1|255|V|
-|inCodi|String|M|1|255|V|
+|inCodi|String|M|1|1|V|
 
 
 ---

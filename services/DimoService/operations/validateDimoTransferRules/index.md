@@ -59,32 +59,31 @@
 ```
 ## Especificación de objetos y atributos del Request
 * ### Request Body
-| Campo | Tipo |
-|-|:-:|
-|validateDimoTransferRulesRequestBO|ValidateDimoTransferRulesRequestBOObject|
+| Campo | Tipo | M/O | L/Mi | L/Ma | V/C |
+|-|:-:|:-:|:-:|:-:|:-:|
+|validateDimoTransferRulesRequestBO|ValidateDimoTransferRulesRequestBOObject|M|1|255|V|
 
 * ### ValidateDimoTransferRulesRequestBOObject
-| Campo | Tipo |
-|-|:-:|
-|applicationId|String|
-|transferInfo|TransferInfoObject|
+| Campo | Tipo | M/O | L/Mi | L/Ma | V/C |
+|-|:-:|:-:|:-:|:-:|:-:|
+|applicationId|String|M|1|255|V|
+|transferInfo|TransferInfoObject|M|1|255|V|
 
 * ### TransferInfoObject
-| Campo | Tipo |
-|-|:-:|
-|amount|Number|
-|description|String|
-|cellphoneNumber|String|
-|sourceAccount|AccountBOObject|
-|destinationAccount|AccountBOObject|
+| Campo | Tipo | M/O | L/Mi | L/Ma | V/C |
+|-|:-:|:-:|:-:|:-:|:-:|
+|amount|Number|M|1|17|V|
+|description|String|M|1|255|V|
+|cellphoneNumber|String|M|10|10|V|
+|sourceAccount|AccountBOObject|M|1|1|V|
+|destinationAccount|AccountBOObject|M|1|1|V|
 
 * ### AccountBOObject
-| Campo | Tipo |
-|-|:-:|
-|bankId|String|
-|accountNumber|String|
-|cellphoneNumber|String|
-
+| Campo | Tipo | M/O | L/Mi | L/Ma | V/C |
+|-|:-:|:-:|:-:|:-:|:-:|
+|bankId|String|M|1|17|V|
+|accountNumber|String|M|1|64|V|
+|cellphoneNumber|String|M|10|10|V|
 
 ---
 

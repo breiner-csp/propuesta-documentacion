@@ -2,7 +2,7 @@
 
 # Dimo Service / transferDimo
 
-###  Esta operación permite consultar a través del proveedor Praxis, si un número de teléfono está vinculado a una cuenta CLABE en la base de datos de Banxico para realizar transferencias Dimo.
+###  Esta operación permite realizar transferencias Dimo.
 ---
 
 
@@ -37,23 +37,35 @@
 ## Request Body
 ```
 {
-  "getDimoAccountRequestBO": {
-    "applicationId": "string",
-    "cellphoneNumber": "string"
-  }
+  transferDimoRequestBO: {
+    applicationId: "string",
+    sessionId: "string",
+    accountGUID: "string",
+    beneficiaryCellphoneNumber: "string",
+    amount: 0,
+    description: "string",
+    referenceNumber: 0,
+    RFCCURPOrderer: "string",
+  },
 }
 ```
 ## Especificación de objetos y atributos del Request
 * ### Request Body
 | Campo | Tipo | M/O | L/Mi | L/Ma | V/C |
 |-|:-:|:-:|:-:|:-:|:-:|
-|getDimoAccountRequestBO|GetDimoAccountRequestBOObject|M|1|1|V|
+|transferDimoRequestBO|TransferDimoRequestBOObject|M|1|255|V|
 
-* ### GetDimoAccountRequestBOObject
+* ### TransferDimoRequestBOObject
 | Campo | Tipo | M/O | L/Mi | L/Ma | V/C |
 |-|:-:|:-:|:-:|:-:|:-:|
 |applicationId|String|M|1|255|V|
-|cellphoneNumber|String|M|10|10|V|
+|sessionId|String|M|1|255|V|
+|accountGUID|String|M|1|255|V|
+|beneficiaryCellphoneNumber|String|M|10|10|V|
+|amount|Number|M|1|17|V|
+|description|String|M|1|255|V|
+|referenceNumber|Number|M|1|255|V|
+|RFCCURPOrderer|String|M|1|255|V|
 
 
 ---
@@ -61,19 +73,12 @@
 ## Response Body
 ```
 {
-  "getDimoAccountResponseBO": {
+  "transferDimoResponseBO": {
     "status": "string",
     "code": "string",
     "response": "string",
-    "data": {
-      "recordFound": false,
-      "maskedCustomerName": "string",
-      "accountType": "string",
-      "accountNumber": "string",
-      "claveSPEI": "string",
-      "rfc": "string",
-      "folioPet": "string"
-    }
+    "transactionId": "string",
+    "trackingId": "string"
   }
 }
 ```
@@ -81,26 +86,16 @@
 * ### Request Body
 | Campo | Tipo |
 |-|:-:|
-|getDimoAccountResponseBO|GetDimoAccountResponseBOObject|
+|transferDimoResponseBO|TransferDimoResponseBOObject|
 
-* ### GetDimoAccountResponseBOObject
+* ### TransferDimoResponseBOObject
 | Campo | Tipo |
 |-|:-:|
 |status|String|
 |code|String|
 |response|String|
-|data|DataObject|
-
-* ### DataObject
-| Campo | Tipo |
-|-|:-:|
-|recordFound|Boolean|
-|maskedCustomerName|String|
-|accountType|String|
-|accountNumber|String|
-|claveSPEI|String|
-|rfc|String|
-|folioPet|String|
+|transactionId|String|
+|trackingId|String|
 
 ---
 
@@ -124,16 +119,16 @@
 ## URL de API por ambiente
 |Ambiente|URL|
 |-|-|
-|Desarrollo|https://apic.consubanco.com/csb/dev/dimo-service/getDimoAccount|    
-|Calidad|https://apic.consubanco.com/csb/qa/dimo-service/getDimoAccount|
-|Producción|https://apic.consubanco.com/csb/prd/dimo-service/getDimoAccount|
+|Desarrollo|https://apic.consubanco.com/csb/dev/dimo-service/transferDimo|    
+|Calidad|https://apic.consubanco.com/csb/qa/dimo-service/transferDimo|
+|Producción|https://apic.consubanco.com/csb/prd/dimo-service/transferDimo|
 
 ---
 
 
 ## Ejemplo de consumo del API - cURL
 ```
-curl --location 'https://apic.consubanco.com/csb/dev/dimo-service/getDimoAccount' \
+curl --location 'https://apic.consubanco.com/csb/dev/dimo-service/transferDimo' \
 --header 'Content-Type: application/json' \
 --header 'Accept: application/json' \
 --header 'X-IBM-Client-Id: XXXXXXXXXXXXXXXXX' \
@@ -146,13 +141,18 @@ curl --location 'https://apic.consubanco.com/csb/dev/dimo-service/getDimoAccount
 ## Componentes de integración relacionados
 |Componente|Paquete/Clase|Método|
 |-|-|-|
-|int-esb-rest-services-mdw|com.consubanco.rest.dimo.impl.DimoServicesImpl|getDimoAccount|
+|csb-ebanking-icbs-services-core|com.consubanco.ebanking.interfaces.icbs.transfer.dimo.impl.TransferDimoImpl|transferDimo|
+|csb-ebanking-icbs-interface|com.consubanco.ebanking.icbs.interfaces.service.impl.CallTransferSameOwnerAccountImpl|transferSameOwner|
+|csb-ebanking-icbs-interface|com.consubanco.ebanking.icbs.interfaces.service.impl.CallTransferThirdPartyImpl|transferThirdParty|
+|shermfin-ws|DimoService.DimoService.DimoService|getDimoAccount|
+|shermfin-ws|DimoService.DimoService.DimoService|validateDimoTransferRules|
 
 ---
 ## Componentes externos relacionados
-|Tipo|Método|URL|Headers|
-|-|-|-|-|
-|REST|POST|http://csbsamdint1.consupago.com:9080/karpaydm/api/banxico/consulta|X-API-KEY<br>X-API-SECRET|
+|Tipo|RPG Program|
+|-|-|
+|ICBS|BF020803|
+|ICBS|BF020301|
 
 ---
 
