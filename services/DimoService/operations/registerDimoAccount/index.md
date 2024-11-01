@@ -2,7 +2,7 @@
 
 # Dimo Service / registerDimoAccount
 
-###  Esta operación permite consultar a través del proveedor Praxis, si un número de teléfono está vinculado a una cuenta CLABE en la base de datos de Banxico para realizar transferencias Dimo.
+###  Esta operación permite dar de alta una cuenta CLABE con un número de teléfono en Banxico a través del proveedor Praxis para realizar transferencias Dimo.
 ---
 
 

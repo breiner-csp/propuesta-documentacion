@@ -2,7 +2,7 @@
 
 # Dimo Service / unregisterDimoAccount
 
-###  Esta operación permite consultar a través del proveedor Praxis, si un número de teléfono está vinculado a una cuenta CLABE en la base de datos de Banxico para realizar transferencias Dimo.
+###  Esta operación permite dar de baja una cuenta CLABE relacionada a un número de teléfono en Banxico a través del proveedor Praxis para evitar realizar transferencias Dimo con esos datos.
 ---
 
 
