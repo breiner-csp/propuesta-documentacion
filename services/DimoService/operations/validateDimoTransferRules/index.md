@@ -2,7 +2,7 @@
 
 # Dimo Service / validateDimoTransferRules
 
-###  Esta operación permite consultar a través del proveedor Praxis, si un número de teléfono está vinculado a una cuenta CLABE en la base de datos de Banxico para realizar transferencias Dimo.
+###  Esta operación permite aplicar reglas de validación a los datos que usarán en una transaferencia Dimo.
 ---
 
 
@@ -37,23 +37,53 @@
 ## Request Body
 ```
 {
-  "getDimoAccountRequestBO": {
+  "validateDimoTransferRulesRequestBO": {
     "applicationId": "string",
-    "cellphoneNumber": "string"
+    "transferInfo": {
+      "amount": 0,
+      "description": "string",
+      "cellphoneNumber": "string",
+      "sourceAccount": {
+        "bankId": "string",
+        "accountNumber": "string",
+        "cellphoneNumber": "string"
+      },
+      "destinationAccount": {
+        "bankId": "string",
+        "accountNumber": "string",
+        "cellphoneNumber": "string"
+      }
+    }
   }
 }
 ```
 ## Especificación de objetos y atributos del Request
 * ### Request Body
-| Campo | Tipo | M/O | L/Mi | L/Ma | V/C |
-|-|:-:|:-:|:-:|:-:|:-:|
-|getDimoAccountRequestBO|GetDimoAccountRequestBOObject|M|1|1|V|
+| Campo | Tipo |
+|-|:-:|
+|validateDimoTransferRulesRequestBO|ValidateDimoTransferRulesRequestBOObject|
 
-* ### GetDimoAccountRequestBOObject
-| Campo | Tipo | M/O | L/Mi | L/Ma | V/C |
-|-|:-:|:-:|:-:|:-:|:-:|
-|applicationId|String|M|1|255|V|
-|cellphoneNumber|String|M|10|10|V|
+* ### ValidateDimoTransferRulesRequestBOObject
+| Campo | Tipo |
+|-|:-:|
+|applicationId|String|
+|transferInfo|TransferInfoObject|
+
+* ### TransferInfoObject
+| Campo | Tipo |
+|-|:-:|
+|amount|Number|
+|description|String|
+|cellphoneNumber|String|
+|sourceAccount|AccountBOObject|
+|destinationAccount|AccountBOObject|
+
+* ### AccountBOObject
+| Campo | Tipo |
+|-|:-:|
+|bankId|String|
+|accountNumber|String|
+|cellphoneNumber|String|
 
 
 ---
@@ -61,19 +91,10 @@
 ## Response Body
 ```
 {
-  "getDimoAccountResponseBO": {
+  "validateDimoTransferRulesResponseBO": {
     "status": "string",
     "code": "string",
-    "response": "string",
-    "data": {
-      "recordFound": false,
-      "maskedCustomerName": "string",
-      "accountType": "string",
-      "accountNumber": "string",
-      "claveSPEI": "string",
-      "rfc": "string",
-      "folioPet": "string"
-    }
+    "response": "string"
   }
 }
 ```
@@ -81,26 +102,14 @@
 * ### Request Body
 | Campo | Tipo |
 |-|:-:|
-|getDimoAccountResponseBO|GetDimoAccountResponseBOObject|
+|validateDimoTransferRulesResponseBO|validateDimoTransferRulesResponseBOObject|
 
-* ### GetDimoAccountResponseBOObject
+* ### validateDimoTransferRulesResponseBOObject
 | Campo | Tipo |
 |-|:-:|
 |status|String|
 |code|String|
 |response|String|
-|data|DataObject|
-
-* ### DataObject
-| Campo | Tipo |
-|-|:-:|
-|recordFound|Boolean|
-|maskedCustomerName|String|
-|accountType|String|
-|accountNumber|String|
-|claveSPEI|String|
-|rfc|String|
-|folioPet|String|
 
 ---
 
@@ -124,16 +133,16 @@
 ## URL de API por ambiente
 |Ambiente|URL|
 |-|-|
-|Desarrollo|https://apic.consubanco.com/csb/dev/dimo-service/getDimoAccount|    
-|Calidad|https://apic.consubanco.com/csb/qa/dimo-service/getDimoAccount|
-|Producción|https://apic.consubanco.com/csb/prd/dimo-service/getDimoAccount|
+|Desarrollo|https://apic.consubanco.com/csb/dev/dimo-service/validateDimoTransferRules|    
+|Calidad|https://apic.consubanco.com/csb/qa/dimo-service/validateDimoTransferRules|
+|Producción|https://apic.consubanco.com/csb/prd/dimo-service/validateDimoTransferRules|
 
 ---
 
 
 ## Ejemplo de consumo del API - cURL
 ```
-curl --location 'https://apic.consubanco.com/csb/dev/dimo-service/getDimoAccount' \
+curl --location 'https://apic.consubanco.com/csb/dev/dimo-service/validateDimoTransferRules' \
 --header 'Content-Type: application/json' \
 --header 'Accept: application/json' \
 --header 'X-IBM-Client-Id: XXXXXXXXXXXXXXXXX' \
@@ -146,20 +155,26 @@ curl --location 'https://apic.consubanco.com/csb/dev/dimo-service/getDimoAccount
 ## Componentes de integración relacionados
 |Componente|Paquete/Clase|Método|
 |-|-|-|
-|int-esb-rest-services-mdw|com.consubanco.rest.dimo.impl.DimoServicesImpl|getDimoAccount|
+|brms-services|com.consupago.brms.services.dimo.DimoService|executeDimoTransactionRuleApp|
 
 ---
 ## Componentes externos relacionados
-|Tipo|Método|URL|Headers|
-|-|-|-|-|
-|REST|POST|http://csbsamdint1.consupago.com:9080/karpaydm/api/banxico/consulta|X-API-KEY<br>X-API-SECRET|
+|Tipo|Rules Path|Flow|Inputs|Outputs|
+|-|-|-|-|-|
+|BRMS|executeDimoTransactionRuleApp|FlujoPrincipal|pruevasDVS<br>solicitud|resultado|
+
+|Componente|Paquete/Clase|
+|-|-|
+|csb-dimo-xom|com.consubanco.brms.dimo.xom.Solicitud|
+|csb-dimo-xom|com.consubanco.brms.dimo.xom.Cuenta|
+|csb-dimo-xom|com.consubanco.brms.dimo.xom.Resultado|
 
 ---
 
 ## Mapeos
-## Request: Integración ---> Praxis
+## Request: Integración ---> BRMS
 ![Request a praxis](./img/map-request.png)
-## Response Praxis ---> Integración
+## Response BRMS ---> Integración
 ![Request a praxis](./img/map-response.png)
 
 ---
