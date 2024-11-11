@@ -2,7 +2,7 @@
 
 # Nomipay Service / validateAccountBankNomipay
 
-###  Esta operación permite consultar a través del proveedor Praxis, si un número de teléfono está vinculado a una cuenta CLABE en la base de datos de Banxico para realizar transferencias Dimo.
+###  Esta operación valida los datos bancarios de un servidor, retornando un valor verdadero (true) si los datos enviados coinciden con los registrados, o un valor falso (false) si uno o más datos son incorrectos.
 ---
 
 
