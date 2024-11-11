@@ -178,9 +178,9 @@ curl --location 'https://apic.consubanco.com/csb/dev/nomipay-service/validateAcc
 ---
 
 ## Mapeos
-## Request: Integración ---> Praxis
-![Request a praxis](./img/map-request.png)
-## Response Praxis ---> Integración
-![Request a praxis](./img/map-response.png)
+## Request: Integración ---> Nomipay
+![Mapeo de request](./img/map-request.png)
+## Response Nomipay ---> Integración
+![Mapeo de response](./img/map-response.png)
 
 ---
