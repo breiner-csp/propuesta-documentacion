@@ -82,7 +82,7 @@
 * ### ApplicationObject
 | Campo | Tipo | M/O | L/Mi | L/Ma | V/C |
 |-|:-:|:-:|:-:|:-:|:-:|
-|cuenta|Number|M|1|20|V|
+|cuenta|Number|M|18|18|V|
 |ficha|Number|M|1|19|V|
 |nomina|Number|M|1|10|V|
 |banco|String|M|0|200|V|
