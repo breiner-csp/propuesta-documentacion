@@ -8,7 +8,7 @@
 
 ## Tabla de control de cambios
 |Responsable|Historia de usuario|Versión de API donde se aplica el cambio|Descripción del cambio|
-|:-:|:-:|:-:|-|
+|-|-|-|-|
 |exbhgarcia|[86b2m0z2k](https://app.clickup.com/t/86b2m0z2k)|v1.0.2|Se adiciona la operación al servicio|
 
 ---
