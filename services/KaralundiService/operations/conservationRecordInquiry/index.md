@@ -5,6 +5,12 @@
 ###  Esta operación consulta la constancia de conservación
 ---
 
+## Tabla de control de cambios
+|Responsable|Historia de usuario|Versión de API donde se aplica el cambio|Descripción del cambio|
+|-|-|-|-|
+|exbhgarcia|[86b37vbzc](https://app.clickup.com/t/86b37vbzc)|v1.0.0|Se adiciona la operación al servicio|
+
+---
 
 ## Simbología y convenciones
 |Símbolo - Convención|Descripción|
@@ -147,11 +153,4 @@ curl --location 'https://apic.consubanco.com/csb/dev/karalundi-service/conservat
 
 ---
 
-
-## Tabla de control de cambios
-|Responsable|Historia de usuario|Versión de API donde se aplica el cambio|Descripción del cambio|
-|-|-|-|-|
-|exbhgarcia|[86b37vbzc](https://app.clickup.com/t/86b37vbzc)|v1.0.0|Se adiciona la operación al servicio|
-
----
 

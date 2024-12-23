@@ -5,6 +5,12 @@
 ###  Esta operación envía un documento al proveedor Karalundi para que realice la firma del mismo
 ---
 
+## Tabla de control de cambios
+|Responsable|Historia de usuario|Versión de API donde se aplica el cambio|Descripción del cambio|
+|-|-|-|-|
+|exbhgarcia|[86b37vbz8](https://app.clickup.com/t/86b37vbz8)|v1.0.0|Se adiciona la operación al servicio|
+
+---
 
 ## Simbología y convenciones
 |Símbolo - Convención|Descripción|

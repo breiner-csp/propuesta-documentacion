@@ -5,6 +5,12 @@
 ###  Esta operación consulta un documento firmado
 ---
 
+## Tabla de control de cambios
+|Responsable|Historia de usuario|Versión de API donde se aplica el cambio|Descripción del cambio|
+|-|-|-|-|
+|exbhgarcia|[86b37vbza](https://app.clickup.com/t/86b37vbza)|v1.0.0|Se adiciona la operación al servicio|
+
+---
 
 ## Simbología y convenciones
 |Símbolo - Convención|Descripción|
