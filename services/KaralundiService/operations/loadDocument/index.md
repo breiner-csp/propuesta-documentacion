@@ -147,14 +147,14 @@ curl --location 'https://apic.consubanco.com/csb/dev/karalundi-service/loadDocum
 ## Componentes de integración relacionados
 |Componente|Paquete/Clase|Método|
 |-|-|-|
-|csb-rest-services|com.consubanco.rest.nomipay.impl.ValidarDatosBancariosServiceImpl|execute|
+|shermfin-ws|mx.com.karalundi.impl.KaralundiImpl|loadDocument|
 
 ---
 
 ## Componentes externos relacionados
 |Tipo|Método|URL|
 |-|-|-|
-|SOAP|POST|https://www.nomipay.com/demo/integrador_wsdl.php|
+|SOAP|POST|https://wstestautosign.doc2sign.com/Doc2SignLite.svc|
 
 ---
 
