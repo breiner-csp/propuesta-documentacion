@@ -161,7 +161,7 @@ curl --location 'https://apic.consubanco.com/csb/dev/karalundi-service/loadDocum
 ## Mapeos
 ## Request: Integración ---> Karalundi
 ![Mapeo de request](./img/map-request.png)
-## Response Karalundi ---> Integración
+## Response: Karalundi ---> Integración
 ![Mapeo de response](./img/map-response.png)
 
 ---
