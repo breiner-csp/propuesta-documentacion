@@ -1,0 +1,260 @@
+swagger: '2.0'
+info:
+  x-ibm-name: karalundi-service
+  title: Karalundi Service
+  version: 1.0.0
+schemes:
+  - https
+host: $(catalog.host)
+basePath: /karalundi-service
+consumes:
+  - application/json
+produces:
+  - application/json
+securityDefinitions:
+  clientID:
+    type: apiKey
+    in: header
+    name: X-IBM-Client-Id
+security:
+  - clientID: []
+paths:
+  /loadDocument:
+    post:
+      responses:
+        '200':
+          description: 200 OK
+          schema:
+            $ref: '#/definitions/loadDocumentResponse_element_Port_0'
+        '500':
+          description: ''
+          schema:
+            $ref: '#/definitions/CommonFault'
+      parameters:
+        - name: request
+          required: true
+          in: body
+          schema:
+            $ref: '#/definitions/loadDocument_element_Port_0'
+  /getSignedDocument:
+    post:
+      responses:
+        '200':
+          description: 200 OK
+          schema:
+            $ref: '#/definitions/getSignedDocumentResponse_element_Port_0'
+        '500':
+          description: ''
+          schema:
+            $ref: '#/definitions/CommonFault'
+      parameters:
+        - name: request
+          required: true
+          in: body
+          schema:
+            $ref: '#/definitions/getSignedDocument_element_Port_0'
+  /conservationRecordInquiry:
+    post:
+      responses:
+        '200':
+          description: 200 OK
+          schema:
+            $ref: '#/definitions/conservationRecordInquiryResponse_element_Port_0'
+        '500':
+          description: ''
+          schema:
+            $ref: '#/definitions/CommonFault'
+      parameters:
+        - name: request
+          required: true
+          in: body
+          schema:
+            $ref: '#/definitions/conservationRecordInquiry_element_Port_0'
+definitions:
+  CommonFault:
+    type: object
+    properties:
+      error:
+        type: string
+      Fault:
+        type: object
+        properties:
+          faultcode:
+            type: string
+          faultstring:
+            type: string
+          faultactor:
+            type: string
+          detail:
+            type: object
+            properties: {}
+  loadDocument_element_Port_0:
+    type: object
+    properties:
+      loadDocumentRequestBO:
+        $ref: '#/definitions/LoadDocumentRequestBO_type_bons1'
+    required:
+      - loadDocumentRequestBO
+  loadDocumentResponse_element_Port_0:
+    type: object
+    properties:
+      loadDocumentResponseBO:
+        $ref: '#/definitions/LoadDocumentResponseBO_type_bons1'
+    required:
+      - loadDocumentResponseBO
+  getSignedDocument_element_Port_0:
+    type: object
+    properties:
+      getSignedDocumentRequestBO:
+        $ref: '#/definitions/GetSignedDocumentRequestBO_type_bons1'
+    required:
+      - getSignedDocumentRequestBO
+  getSignedDocumentResponse_element_Port_0:
+    type: object
+    properties:
+      getSignedDocumentResponseBO:
+        $ref: '#/definitions/GetSignedDocumentResponseBO_type_bons1'
+    required:
+      - getSignedDocumentResponseBO
+  conservationRecordInquiry_element_Port_0:
+    type: object
+    properties:
+      conservationRecordInquiryReqBO:
+        $ref: '#/definitions/ConservationRecordInquiryReqBO_type_bons1'
+    required:
+      - conservationRecordInquiryReqBO
+  conservationRecordInquiryResponse_element_Port_0:
+    type: object
+    properties:
+      conservationRecordInquiryRespBO:
+        $ref: '#/definitions/ConservationRecordInquiryRespBO_type_bons1'
+    required:
+      - conservationRecordInquiryRespBO
+  LoadDocumentRequestBO_type_bons1:
+    type: object
+    properties:
+      applicationId:
+        type: string
+      credential:
+        $ref: '#/definitions/CredentialBO_type_bons1'
+      person:
+        $ref: '#/definitions/PersonBO_type_bons1'
+      base64:
+        type: string
+      showSignatures:
+        type: boolean
+        default: false
+    x-nullable: true
+    x-xsi-type: LoadDocumentRequestBO
+    x-xsi-type-xml:
+      namespace: http://KaralundiService
+      prefix: bons1
+    x-xsi-type-uniquename: LoadDocumentRequestBO_type_bons1
+  LoadDocumentResponseBO_type_bons1:
+    type: object
+    properties:
+      status:
+        type: string
+      code:
+        type: string
+      response:
+        type: string
+    x-nullable: true
+    x-xsi-type: LoadDocumentResponseBO
+    x-xsi-type-xml:
+      namespace: http://KaralundiService
+      prefix: bons1
+    x-xsi-type-uniquename: LoadDocumentResponseBO_type_bons1
+  GetSignedDocumentRequestBO_type_bons1:
+    type: object
+    properties:
+      applicationId:
+        type: string
+      credential:
+        $ref: '#/definitions/CredentialBO_type_bons1'
+    x-nullable: true
+    x-xsi-type: GetSignedDocumentRequestBO
+    x-xsi-type-xml:
+      namespace: http://KaralundiService
+      prefix: bons1
+    x-xsi-type-uniquename: GetSignedDocumentRequestBO_type_bons1
+  GetSignedDocumentResponseBO_type_bons1:
+    type: object
+    properties:
+      status:
+        type: string
+      code:
+        type: string
+      response:
+        type: string
+      base64:
+        type: string
+    x-nullable: true
+    x-xsi-type: GetSignedDocumentResponseBO
+    x-xsi-type-xml:
+      namespace: http://KaralundiService
+      prefix: bons1
+    x-xsi-type-uniquename: GetSignedDocumentResponseBO_type_bons1
+  ConservationRecordInquiryReqBO_type_bons1:
+    type: object
+    properties:
+      applicationId:
+        type: string
+      credential:
+        $ref: '#/definitions/CredentialBO_type_bons1'
+    x-nullable: true
+    x-xsi-type: ConservationRecordInquiryReqBO
+    x-xsi-type-xml:
+      namespace: http://KaralundiService
+      prefix: bons1
+    x-xsi-type-uniquename: ConservationRecordInquiryReqBO_type_bons1
+  ConservationRecordInquiryRespBO_type_bons1:
+    type: object
+    properties:
+      status:
+        type: string
+      code:
+        type: string
+      response:
+        type: string
+      base64:
+        type: string
+    x-nullable: true
+    x-xsi-type: ConservationRecordInquiryRespBO
+    x-xsi-type-xml:
+      namespace: http://KaralundiService
+      prefix: bons1
+    x-xsi-type-uniquename: ConservationRecordInquiryRespBO_type_bons1
+  CredentialBO_type_bons1:
+    type: object
+    properties:
+      userService:
+        type: string
+      passwordService:
+        type: string
+      identifier:
+        type: string
+    x-xsi-type: CredentialBO
+    x-xsi-type-xml:
+      namespace: http://KaralundiService
+      prefix: bons1
+    x-xsi-type-uniquename: CredentialBO_type_bons1
+  PersonBO_type_bons1:
+    type: object
+    properties:
+      names:
+        type: string
+      lastname1:
+        type: string
+      lastname2:
+        type: string
+      rfc:
+        type: string
+      email:
+        type: string
+    x-xsi-type: PersonBO
+    x-xsi-type-xml:
+      namespace: http://KaralundiService
+      prefix: bons1
+    x-xsi-type-uniquename: PersonBO_type_bons1
+tags: []

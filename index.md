@@ -7,6 +7,7 @@ A continuación se podrá visualizar la lista de servicios de CONSUBANCO que son
 |Nombre de Servicio|Tipo|Repositorio de Servicio|Repositorio de API|
 |-|-|-|-|
 |[Dimo Service](services/DimoService/index.md)|API Proxy|[https://github.com/InnovacionTecnologicaCSP/int-esb-dimo-service-mdw](https://github.com/InnovacionTecnologicaCSP/int-esb-dimo-service-mdw)|[https://github.com/InnovacionTecnologicaCSP/int-apic-dimo-service-mdw](https://github.com/InnovacionTecnologicaCSP/int-apic-dimo-service-mdw)|
+|[Karalindi Service](services/KaralundiService/index.md)|API Proxy|[https://github.com/InnovacionTecnologicaCSP/int-esb-karalundi-service-mdw](https://github.com/InnovacionTecnologicaCSP/int-esb-karalundi-service-mdw)|[https://github.com/InnovacionTecnologicaCSP/int-apic-karalundi-service-mdw](https://github.com/InnovacionTecnologicaCSP/int-apic-karalundi-service-mdw)|
 |[Nomipay Service](services/NomipayService/index.md)|API Proxy|[https://github.com/InnovacionTecnologicaCSP/int-esb-nomipay-service-mdw](https://github.com/InnovacionTecnologicaCSP/int-esb-nomipay-service-mdw)|[https://github.com/InnovacionTecnologicaCSP/int-apic-nomipay-service-mdw](https://github.com/InnovacionTecnologicaCSP/int-apic-nomipay-service-mdw)|
 
 --- 
