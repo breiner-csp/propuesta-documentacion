@@ -1,16 +1,24 @@
 [<-- Volver al listado de operaciones](./../../index.md)
 
-# Karalundi Service / getSignedDocument
+# Dimo Service / registerDimoAccount
 
-###  Esta operación consulta un documento firmado
+###  Esta operación permite dar de alta una cuenta CLABE con un número de teléfono en Banxico a través del proveedor Praxis para realizar transferencias Dimo.
 ---
+
 
 ## Tabla de control de cambios
 |Responsable|Historia de usuario|Versión de API donde se aplica el cambio|Descripción del cambio|
-|-|-|-|-|
-|exbhgarcia|[86b37vbza](https://app.clickup.com/t/86b37vbza)|v1.0.0|Se adiciona la operación al servicio|
+|:-:|:-:|:-:|-|
+|exbhgarcia|[86b1x64pc](https://app.clickup.com/t/86b1x64pc)|v1.0.0|Se adiciona la operación al servicio|
 
 ---
+
+
+## Diagrama de componentes
+![Diagrama de componentes](./img/components.png)
+
+---
+
 
 ## Simbología y convenciones
 |Símbolo - Convención|Descripción|
@@ -29,13 +37,14 @@
 ## Request Body
 ```
 {
-  "getSignedDocumentRequestBO": {
+  "registerDimoAccountRequestBO": {
     "applicationId": "string",
-    "credential": {
-      "userService": "string",
-      "passwordService": "string",
-      "identifier": "string"
-    }
+    "cellphoneNumber": "string",
+    "accountType": "string",
+    "accountCLABE": "string",
+    "maskedCustomerName": "string",
+    "rfc": "string",
+    "inCodi": "string"
   }
 }
 ```
@@ -43,20 +52,18 @@
 * ### Request Body
 | Campo | Tipo | M/O | L/Mi | L/Ma | V/C |
 |-|:-:|:-:|:-:|:-:|:-:|
-|getSignedDocumentRequestBO|GetSignedDocumentRequestBOObject|M|1|255|V|
+|registerDimoAccountRequestBO|RegisterDimoAccountRequestBOObject|M|1|255|V|
 
-* ### GetSignedDocumentRequestBOObject
+* ### RegisterDimoAccountRequestBOObject
 | Campo | Tipo | M/O | L/Mi | L/Ma | V/C |
 |-|:-:|:-:|:-:|:-:|:-:|
 |applicationId|String|M|1|255|V|
-|credential|CredentialObject|M|1|255|V|
-
-* ### CredentialObject
-| Campo | Tipo | M/O | L/Mi | L/Ma | V/C |
-|-|:-:|:-:|:-:|:-:|:-:|
-|userService|String|M|1|255|V|
-|passwordService|String|M|1|255|V|
-|identifier|String|M|1|255|V|
+|cellphoneNumber|String|M|10|10|V|
+|accountType|String|M|1|255|V|
+|accountCLABE|String|M|18|18|V|
+|maskedCustomerName|String|M|1|255|V|
+|rfc|String|M|1|255|V|
+|inCodi|String|M|1|1|V|
 
 
 ---
@@ -64,27 +71,34 @@
 ## Response Body
 ```
 {
-  "getSignedDocumentResponseBO": {
+  "registerDimoAccountResponseBO": {
     "status": "string",
     "code": "string",
     "response": "string",
-    "base64": "string"
+    "data": {
+      "folioPet": "string"
+    }
   }
 }
 ```
 ## Especificación de objetos y atributos del Response
-* ### Response Body
+* ### Request Body
 | Campo | Tipo |
 |-|:-:|
-|getSignedDocumentResponseBO|GetSignedDocumentResponseBOObject|
+|registerDimoAccountResponseBO|RegisterDimoAccountResponseBOObject|
 
-* ### GetSignedDocumentResponseBOObject
+* ### RegisterDimoAccountResponseBOObject
 | Campo | Tipo |
 |-|:-:|
 |status|String|
 |code|String|
 |response|String|
-|base64|String|
+|data|DataObject|
+
+* ### DataObject
+| Campo | Tipo |
+|-|:-:|
+|folioPet|String|
 
 ---
 
@@ -108,16 +122,16 @@
 ## URL de API por ambiente
 |Ambiente|URL|
 |-|-|
-|Desarrollo|https://apic.consubanco.com/csb/dev/karalundi-service/getSignedDocument|    
-|Calidad|https://apic.consubanco.com/csb/qa/karalundi-service/getSignedDocument|
-|Producción|https://apic.consubanco.com/csb/prd/karalundi-service/getSignedDocument|
+|Desarrollo|https://apic.consubanco.com/csb/dev/dimo-service/registerDimoAccount|    
+|Calidad|https://apic.consubanco.com/csb/qa/dimo-service/registerDimoAccount|
+|Producción|https://apic.consubanco.com/csb/prd/dimo-service/registerDimoAccount|
 
 ---
 
 
 ## Ejemplo de consumo del API - cURL
 ```
-curl --location 'https://apic.consubanco.com/csb/dev/karalundi-service/getSignedDocument' \
+curl --location 'https://apic.consubanco.com/csb/dev/dimo-service/registerDimoAccount' \
 --header 'Content-Type: application/json' \
 --header 'Accept: application/json' \
 --header 'X-IBM-Client-Id: XXXXXXXXXXXXXXXXX' \
@@ -125,6 +139,5 @@ curl --location 'https://apic.consubanco.com/csb/dev/karalundi-service/getSigned
 --data 'REPLACE_REQUEST_BODY'
 ```
 ---
-
 
 <!-- DOCUMENTACION TECNICA -->

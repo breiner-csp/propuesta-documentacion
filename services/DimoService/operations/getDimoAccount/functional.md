@@ -1,16 +1,18 @@
 [<-- Volver al listado de operaciones](./../../index.md)
 
-# Karalundi Service / getSignedDocument
+# Dimo Service / getDimoAccount
 
-###  Esta operación consulta un documento firmado
+###  Esta operación permite consultar a través del proveedor Praxis, si un número de teléfono está vinculado a una cuenta CLABE en la base de datos de Banxico para realizar transferencias Dimo.
 ---
+
 
 ## Tabla de control de cambios
 |Responsable|Historia de usuario|Versión de API donde se aplica el cambio|Descripción del cambio|
-|-|-|-|-|
-|exbhgarcia|[86b37vbza](https://app.clickup.com/t/86b37vbza)|v1.0.0|Se adiciona la operación al servicio|
+|:-:|:-:|:-:|-|
+|exbhgarcia|[86b1x64g2](https://app.clickup.com/t/86b1x64g2)|v1.0.0|Se adiciona la operación al servicio|
 
 ---
+
 
 ## Simbología y convenciones
 |Símbolo - Convención|Descripción|
@@ -29,13 +31,9 @@
 ## Request Body
 ```
 {
-  "getSignedDocumentRequestBO": {
+  "getDimoAccountRequestBO": {
     "applicationId": "string",
-    "credential": {
-      "userService": "string",
-      "passwordService": "string",
-      "identifier": "string"
-    }
+    "cellphoneNumber": "string"
   }
 }
 ```
@@ -43,20 +41,13 @@
 * ### Request Body
 | Campo | Tipo | M/O | L/Mi | L/Ma | V/C |
 |-|:-:|:-:|:-:|:-:|:-:|
-|getSignedDocumentRequestBO|GetSignedDocumentRequestBOObject|M|1|255|V|
+|getDimoAccountRequestBO|GetDimoAccountRequestBOObject|M|1|1|V|
 
-* ### GetSignedDocumentRequestBOObject
+* ### GetDimoAccountRequestBOObject
 | Campo | Tipo | M/O | L/Mi | L/Ma | V/C |
 |-|:-:|:-:|:-:|:-:|:-:|
 |applicationId|String|M|1|255|V|
-|credential|CredentialObject|M|1|255|V|
-
-* ### CredentialObject
-| Campo | Tipo | M/O | L/Mi | L/Ma | V/C |
-|-|:-:|:-:|:-:|:-:|:-:|
-|userService|String|M|1|255|V|
-|passwordService|String|M|1|255|V|
-|identifier|String|M|1|255|V|
+|cellphoneNumber|String|M|10|10|V|
 
 
 ---
@@ -64,27 +55,46 @@
 ## Response Body
 ```
 {
-  "getSignedDocumentResponseBO": {
+  "getDimoAccountResponseBO": {
     "status": "string",
     "code": "string",
     "response": "string",
-    "base64": "string"
+    "data": {
+      "recordFound": false,
+      "maskedCustomerName": "string",
+      "accountType": "string",
+      "accountNumber": "string",
+      "claveSPEI": "string",
+      "rfc": "string",
+      "folioPet": "string"
+    }
   }
 }
 ```
 ## Especificación de objetos y atributos del Response
-* ### Response Body
+* ### Request Body
 | Campo | Tipo |
 |-|:-:|
-|getSignedDocumentResponseBO|GetSignedDocumentResponseBOObject|
+|getDimoAccountResponseBO|GetDimoAccountResponseBOObject|
 
-* ### GetSignedDocumentResponseBOObject
+* ### GetDimoAccountResponseBOObject
 | Campo | Tipo |
 |-|:-:|
 |status|String|
 |code|String|
 |response|String|
-|base64|String|
+|data|DataObject|
+
+* ### DataObject
+| Campo | Tipo |
+|-|:-:|
+|recordFound|Boolean|
+|maskedCustomerName|String|
+|accountType|String|
+|accountNumber|String|
+|claveSPEI|String|
+|rfc|String|
+|folioPet|String|
 
 ---
 
@@ -108,16 +118,16 @@
 ## URL de API por ambiente
 |Ambiente|URL|
 |-|-|
-|Desarrollo|https://apic.consubanco.com/csb/dev/karalundi-service/getSignedDocument|    
-|Calidad|https://apic.consubanco.com/csb/qa/karalundi-service/getSignedDocument|
-|Producción|https://apic.consubanco.com/csb/prd/karalundi-service/getSignedDocument|
+|Desarrollo|https://apic.consubanco.com/csb/dev/dimo-service/getDimoAccount|    
+|Calidad|https://apic.consubanco.com/csb/qa/dimo-service/getDimoAccount|
+|Producción|https://apic.consubanco.com/csb/prd/dimo-service/getDimoAccount|
 
 ---
 
 
 ## Ejemplo de consumo del API - cURL
 ```
-curl --location 'https://apic.consubanco.com/csb/dev/karalundi-service/getSignedDocument' \
+curl --location 'https://apic.consubanco.com/csb/dev/dimo-service/getDimoAccount' \
 --header 'Content-Type: application/json' \
 --header 'Accept: application/json' \
 --header 'X-IBM-Client-Id: XXXXXXXXXXXXXXXXX' \
@@ -125,6 +135,5 @@ curl --location 'https://apic.consubanco.com/csb/dev/karalundi-service/getSigned
 --data 'REPLACE_REQUEST_BODY'
 ```
 ---
-
 
 <!-- DOCUMENTACION TECNICA -->

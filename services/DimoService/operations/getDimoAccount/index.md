@@ -14,12 +14,6 @@
 ---
 
 
-## Diagrama de componentes
-![Diagrama de componentes](./img/components.png)
-
----
-
-
 ## Simbología y convenciones
 |Símbolo - Convención|Descripción|
 |-|-|
@@ -140,6 +134,12 @@ curl --location 'https://apic.consubanco.com/csb/dev/dimo-service/getDimoAccount
 --header 'Cookie: 0f64ea607ea127be876814b5b38b0d94=c6c8f20ec97961f1e06618f4e1fd07e1' \
 --data 'REPLACE_REQUEST_BODY'
 ```
+---
+
+<!-- DOCUMENTACION TECNICA -->
+## Diagrama de componentes
+![Diagrama de componentes](./img/components.png)
+
 ---
 
 

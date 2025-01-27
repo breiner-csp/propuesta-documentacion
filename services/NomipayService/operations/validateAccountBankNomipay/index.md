@@ -157,6 +157,7 @@ curl --location 'https://apic.consubanco.com/csb/dev/nomipay-service/validateAcc
 ---
 
 
+<!-- DOCUMENTACION TECNICA -->
 ## Diagrama de componentes
 ![Diagrama de componentes](./img/components.png)
 

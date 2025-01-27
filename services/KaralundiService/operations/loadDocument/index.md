@@ -145,6 +145,8 @@ curl --location 'https://apic.consubanco.com/csb/dev/karalundi-service/loadDocum
 ```
 ---
 
+
+<!-- DOCUMENTACION TECNICA -->
 ## Diagrama de componentes
 ![Diagrama de componentes](./img/components.png)
 

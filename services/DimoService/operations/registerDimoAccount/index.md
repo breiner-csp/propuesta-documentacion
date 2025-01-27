@@ -140,7 +140,7 @@ curl --location 'https://apic.consubanco.com/csb/dev/dimo-service/registerDimoAc
 ```
 ---
 
-
+<!-- DOCUMENTACION TECNICA -->
 ## Componentes de integración relacionados
 |Componente|Paquete/Clase|Método|
 |-|-|-|

@@ -1,16 +1,24 @@
 [<-- Volver al listado de operaciones](./../../index.md)
 
-# Karalundi Service / getSignedDocument
+# Dimo Service / transferDimo
 
-###  Esta operación consulta un documento firmado
+###  Esta operación permite realizar transferencias Dimo.
 ---
+
 
 ## Tabla de control de cambios
 |Responsable|Historia de usuario|Versión de API donde se aplica el cambio|Descripción del cambio|
-|-|-|-|-|
-|exbhgarcia|[86b37vbza](https://app.clickup.com/t/86b37vbza)|v1.0.0|Se adiciona la operación al servicio|
+|:-:|:-:|:-:|-|
+|exbhgarcia|[86b1x66d4](https://app.clickup.com/t/86b1x66d4)|v1.0.0|Se adiciona la operación al servicio|
 
 ---
+
+
+## Diagrama de componentes
+![Diagrama de componentes](./img/components.png)
+
+---
+
 
 ## Simbología y convenciones
 |Símbolo - Convención|Descripción|
@@ -29,34 +37,35 @@
 ## Request Body
 ```
 {
-  "getSignedDocumentRequestBO": {
-    "applicationId": "string",
-    "credential": {
-      "userService": "string",
-      "passwordService": "string",
-      "identifier": "string"
-    }
-  }
+  transferDimoRequestBO: {
+    applicationId: "string",
+    sessionId: "string",
+    accountGUID: "string",
+    beneficiaryCellphoneNumber: "string",
+    amount: 0,
+    description: "string",
+    referenceNumber: 0,
+    RFCCURPOrderer: "string",
+  },
 }
 ```
 ## Especificación de objetos y atributos del Request
 * ### Request Body
 | Campo | Tipo | M/O | L/Mi | L/Ma | V/C |
 |-|:-:|:-:|:-:|:-:|:-:|
-|getSignedDocumentRequestBO|GetSignedDocumentRequestBOObject|M|1|255|V|
+|transferDimoRequestBO|TransferDimoRequestBOObject|M|1|255|V|
 
-* ### GetSignedDocumentRequestBOObject
+* ### TransferDimoRequestBOObject
 | Campo | Tipo | M/O | L/Mi | L/Ma | V/C |
 |-|:-:|:-:|:-:|:-:|:-:|
 |applicationId|String|M|1|255|V|
-|credential|CredentialObject|M|1|255|V|
-
-* ### CredentialObject
-| Campo | Tipo | M/O | L/Mi | L/Ma | V/C |
-|-|:-:|:-:|:-:|:-:|:-:|
-|userService|String|M|1|255|V|
-|passwordService|String|M|1|255|V|
-|identifier|String|M|1|255|V|
+|sessionId|String|M|1|255|V|
+|accountGUID|String|M|1|255|V|
+|beneficiaryCellphoneNumber|String|M|10|10|V|
+|amount|Number|M|1|17|V|
+|description|String|M|1|255|V|
+|referenceNumber|Number|M|1|255|V|
+|RFCCURPOrderer|String|M|1|255|V|
 
 
 ---
@@ -64,27 +73,29 @@
 ## Response Body
 ```
 {
-  "getSignedDocumentResponseBO": {
+  "transferDimoResponseBO": {
     "status": "string",
     "code": "string",
     "response": "string",
-    "base64": "string"
+    "transactionId": "string",
+    "trackingId": "string"
   }
 }
 ```
 ## Especificación de objetos y atributos del Response
-* ### Response Body
+* ### Request Body
 | Campo | Tipo |
 |-|:-:|
-|getSignedDocumentResponseBO|GetSignedDocumentResponseBOObject|
+|transferDimoResponseBO|TransferDimoResponseBOObject|
 
-* ### GetSignedDocumentResponseBOObject
+* ### TransferDimoResponseBOObject
 | Campo | Tipo |
 |-|:-:|
 |status|String|
 |code|String|
 |response|String|
-|base64|String|
+|transactionId|String|
+|trackingId|String|
 
 ---
 
@@ -108,16 +119,16 @@
 ## URL de API por ambiente
 |Ambiente|URL|
 |-|-|
-|Desarrollo|https://apic.consubanco.com/csb/dev/karalundi-service/getSignedDocument|    
-|Calidad|https://apic.consubanco.com/csb/qa/karalundi-service/getSignedDocument|
-|Producción|https://apic.consubanco.com/csb/prd/karalundi-service/getSignedDocument|
+|Desarrollo|https://apic.consubanco.com/csb/dev/dimo-service/transferDimo|    
+|Calidad|https://apic.consubanco.com/csb/qa/dimo-service/transferDimo|
+|Producción|https://apic.consubanco.com/csb/prd/dimo-service/transferDimo|
 
 ---
 
 
 ## Ejemplo de consumo del API - cURL
 ```
-curl --location 'https://apic.consubanco.com/csb/dev/karalundi-service/getSignedDocument' \
+curl --location 'https://apic.consubanco.com/csb/dev/dimo-service/transferDimo' \
 --header 'Content-Type: application/json' \
 --header 'Accept: application/json' \
 --header 'X-IBM-Client-Id: XXXXXXXXXXXXXXXXX' \
@@ -125,6 +136,5 @@ curl --location 'https://apic.consubanco.com/csb/dev/karalundi-service/getSigned
 --data 'REPLACE_REQUEST_BODY'
 ```
 ---
-
 
 <!-- DOCUMENTACION TECNICA -->

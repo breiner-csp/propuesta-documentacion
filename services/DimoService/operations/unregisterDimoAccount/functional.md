@@ -1,16 +1,24 @@
 [<-- Volver al listado de operaciones](./../../index.md)
 
-# Karalundi Service / getSignedDocument
+# Dimo Service / unregisterDimoAccount
 
-###  Esta operación consulta un documento firmado
+###  Esta operación permite dar de baja una cuenta CLABE relacionada a un número de teléfono en Banxico a través del proveedor Praxis para evitar realizar transferencias Dimo con esos datos.
 ---
+
 
 ## Tabla de control de cambios
 |Responsable|Historia de usuario|Versión de API donde se aplica el cambio|Descripción del cambio|
-|-|-|-|-|
-|exbhgarcia|[86b37vbza](https://app.clickup.com/t/86b37vbza)|v1.0.0|Se adiciona la operación al servicio|
+|:-:|:-:|:-:|-|
+|exbhgarcia|[86b1x6en7](https://app.clickup.com/t/86b1x6en7)|v1.0.0|Se adiciona la operación al servicio|
 
 ---
+
+
+## Diagrama de componentes
+![Diagrama de componentes](./img/components.png)
+
+---
+
 
 ## Simbología y convenciones
 |Símbolo - Convención|Descripción|
@@ -29,13 +37,9 @@
 ## Request Body
 ```
 {
-  "getSignedDocumentRequestBO": {
+  "unregisterDimoAccountRequestBO": {
     "applicationId": "string",
-    "credential": {
-      "userService": "string",
-      "passwordService": "string",
-      "identifier": "string"
-    }
+    "cellphoneNumber": "string"
   }
 }
 ```
@@ -43,20 +47,13 @@
 * ### Request Body
 | Campo | Tipo | M/O | L/Mi | L/Ma | V/C |
 |-|:-:|:-:|:-:|:-:|:-:|
-|getSignedDocumentRequestBO|GetSignedDocumentRequestBOObject|M|1|255|V|
+|unregisterDimoAccountRequestBO|UnregisterDimoAccountRequestBOObject|M|1|255|V|
 
-* ### GetSignedDocumentRequestBOObject
+* ### UnregisterDimoAccountRequestBOObject
 | Campo | Tipo | M/O | L/Mi | L/Ma | V/C |
 |-|:-:|:-:|:-:|:-:|:-:|
 |applicationId|String|M|1|255|V|
-|credential|CredentialObject|M|1|255|V|
-
-* ### CredentialObject
-| Campo | Tipo | M/O | L/Mi | L/Ma | V/C |
-|-|:-:|:-:|:-:|:-:|:-:|
-|userService|String|M|1|255|V|
-|passwordService|String|M|1|255|V|
-|identifier|String|M|1|255|V|
+|cellphoneNumber|String|M|10|10|V|
 
 
 ---
@@ -64,27 +61,34 @@
 ## Response Body
 ```
 {
-  "getSignedDocumentResponseBO": {
+  "unregisterDimoAccountResponseBO": {
     "status": "string",
     "code": "string",
     "response": "string",
-    "base64": "string"
+    "data": {
+      "folioPet": "string"
+    }
   }
 }
 ```
 ## Especificación de objetos y atributos del Response
-* ### Response Body
+* ### Request Body
 | Campo | Tipo |
 |-|:-:|
-|getSignedDocumentResponseBO|GetSignedDocumentResponseBOObject|
+|unregisterDimoAccountResponseBO|UnregisterDimoAccountResponseBOObject|
 
-* ### GetSignedDocumentResponseBOObject
+* ### UnregisterDimoAccountResponseBOObject
 | Campo | Tipo |
 |-|:-:|
 |status|String|
 |code|String|
 |response|String|
-|base64|String|
+|data|DataObject|
+
+* ### DataObject
+| Campo | Tipo |
+|-|:-:|
+|folioPet|String|
 
 ---
 
@@ -108,16 +112,16 @@
 ## URL de API por ambiente
 |Ambiente|URL|
 |-|-|
-|Desarrollo|https://apic.consubanco.com/csb/dev/karalundi-service/getSignedDocument|    
-|Calidad|https://apic.consubanco.com/csb/qa/karalundi-service/getSignedDocument|
-|Producción|https://apic.consubanco.com/csb/prd/karalundi-service/getSignedDocument|
+|Desarrollo|https://apic.consubanco.com/csb/dev/dimo-service/unregisterDimoAccount|    
+|Calidad|https://apic.consubanco.com/csb/qa/dimo-service/unregisterDimoAccount|
+|Producción|https://apic.consubanco.com/csb/prd/dimo-service/unregisterDimoAccount|
 
 ---
 
 
 ## Ejemplo de consumo del API - cURL
 ```
-curl --location 'https://apic.consubanco.com/csb/dev/karalundi-service/getSignedDocument' \
+curl --location 'https://apic.consubanco.com/csb/dev/dimo-service/unregisterDimoAccount' \
 --header 'Content-Type: application/json' \
 --header 'Accept: application/json' \
 --header 'X-IBM-Client-Id: XXXXXXXXXXXXXXXXX' \
@@ -125,6 +129,5 @@ curl --location 'https://apic.consubanco.com/csb/dev/karalundi-service/getSigned
 --data 'REPLACE_REQUEST_BODY'
 ```
 ---
-
 
 <!-- DOCUMENTACION TECNICA -->

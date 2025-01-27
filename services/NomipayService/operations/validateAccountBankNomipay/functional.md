@@ -156,3 +156,5 @@ curl --location 'https://apic.consubanco.com/csb/dev/nomipay-service/validateAcc
 ```
 ---
 
+
+<!-- DOCUMENTACION TECNICA -->

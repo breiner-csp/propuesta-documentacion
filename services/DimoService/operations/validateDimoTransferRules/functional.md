@@ -1,16 +1,24 @@
 [<-- Volver al listado de operaciones](./../../index.md)
 
-# Karalundi Service / loadDocument
+# Dimo Service / validateDimoTransferRules
 
-###  Esta operación envía un documento al proveedor Karalundi para que realice la firma del mismo
+###  Esta operación permite aplicar reglas de validación a los datos que usarán en una transaferencia Dimo.
 ---
+
 
 ## Tabla de control de cambios
 |Responsable|Historia de usuario|Versión de API donde se aplica el cambio|Descripción del cambio|
-|-|-|-|-|
-|exbhgarcia|[86b37vbz8](https://app.clickup.com/t/86b37vbz8)|v1.0.0|Se adiciona la operación al servicio|
+|:-:|:-:|:-:|-|
+|exbhgarcia|[86b1x665f](https://app.clickup.com/t/86b1x665f)|v1.0.0|Se adiciona la operación al servicio|
 
 ---
+
+
+## Diagrama de componentes
+![Diagrama de componentes](./img/components.png)
+
+---
+
 
 ## Simbología y convenciones
 |Símbolo - Convención|Descripción|
@@ -29,22 +37,23 @@
 ## Request Body
 ```
 {
-  "loadDocumentRequestBO": {
+  "validateDimoTransferRulesRequestBO": {
     "applicationId": "string",
-    "credential": {
-      "userService": "string",
-      "passwordService": "string",
-      "identifier": "string"
-    },
-    "person": {
-      "names": "string",
-      "lastname1": "string",
-      "lastname2": "string",
-      "rfc": "string",
-      "email": "string"
-    },
-    "base64": "string",
-    "showSignatures": false
+    "transferInfo": {
+      "amount": 0,
+      "description": "string",
+      "cellphoneNumber": "string",
+      "sourceAccount": {
+        "bankId": "string",
+        "accountNumber": "string",
+        "cellphoneNumber": "string"
+      },
+      "destinationAccount": {
+        "bankId": "string",
+        "accountNumber": "string",
+        "cellphoneNumber": "string"
+      }
+    }
   }
 }
 ```
@@ -52,40 +61,36 @@
 * ### Request Body
 | Campo | Tipo | M/O | L/Mi | L/Ma | V/C |
 |-|:-:|:-:|:-:|:-:|:-:|
-|loadDocumentRequestBO|LoadDocumentRequestBOObject|M|1|255|V|
+|validateDimoTransferRulesRequestBO|ValidateDimoTransferRulesRequestBOObject|M|1|255|V|
 
-* ### LoadDocumentRequestBOObject
+* ### ValidateDimoTransferRulesRequestBOObject
 | Campo | Tipo | M/O | L/Mi | L/Ma | V/C |
 |-|:-:|:-:|:-:|:-:|:-:|
 |applicationId|String|M|1|255|V|
-|credential|CredentialObject|M|1|255|V|
-|person|PersonObject|M|1|255|V|
-|base64|String|M|1|N/E|V|
-|showSignatures|Boolean|M|N/A|N/A|V|
+|transferInfo|TransferInfoObject|M|1|255|V|
 
-* ### CredentialObject
+* ### TransferInfoObject
 | Campo | Tipo | M/O | L/Mi | L/Ma | V/C |
 |-|:-:|:-:|:-:|:-:|:-:|
-|userService|String|M|1|255|V|
-|passwordService|String|M|1|255|V|
-|identifier|String|M|1|255|V|
+|amount|Number|M|1|17|V|
+|description|String|M|1|255|V|
+|cellphoneNumber|String|M|10|10|V|
+|sourceAccount|AccountBOObject|M|1|1|V|
+|destinationAccount|AccountBOObject|M|1|1|V|
 
-* ### PersonObject
+* ### AccountBOObject
 | Campo | Tipo | M/O | L/Mi | L/Ma | V/C |
 |-|:-:|:-:|:-:|:-:|:-:|
-|names|String|M|1|255|V|
-|lastname1|String|M|1|255|V|
-|lastname2|String|M|1|255|V|
-|rfc|String|M|1|255|V|
-|email|String|M|1|255|V|
-
+|bankId|String|M|1|17|V|
+|accountNumber|String|M|1|64|V|
+|cellphoneNumber|String|M|10|10|V|
 
 ---
 
 ## Response Body
 ```
 {
-  "loadDocumentResponseBO": {
+  "validateDimoTransferRulesResponseBO": {
     "status": "string",
     "code": "string",
     "response": "string"
@@ -93,12 +98,12 @@
 }
 ```
 ## Especificación de objetos y atributos del Response
-* ### Response Body
+* ### Request Body
 | Campo | Tipo |
 |-|:-:|
-|loadDocumentResponseBO|LoadDocumentResponseBOObject|
+|validateDimoTransferRulesResponseBO|validateDimoTransferRulesResponseBOObject|
 
-* ### LoadDocumentResponseBOObject
+* ### validateDimoTransferRulesResponseBOObject
 | Campo | Tipo |
 |-|:-:|
 |status|String|
@@ -127,16 +132,16 @@
 ## URL de API por ambiente
 |Ambiente|URL|
 |-|-|
-|Desarrollo|https://apic.consubanco.com/csb/dev/karalundi-service/loadDocument|    
-|Calidad|https://apic.consubanco.com/csb/qa/karalundi-service/loadDocument|
-|Producción|https://apic.consubanco.com/csb/prd/karalundi-service/loadDocument|
+|Desarrollo|https://apic.consubanco.com/csb/dev/dimo-service/validateDimoTransferRules|    
+|Calidad|https://apic.consubanco.com/csb/qa/dimo-service/validateDimoTransferRules|
+|Producción|https://apic.consubanco.com/csb/prd/dimo-service/validateDimoTransferRules|
 
 ---
 
 
 ## Ejemplo de consumo del API - cURL
 ```
-curl --location 'https://apic.consubanco.com/csb/dev/karalundi-service/loadDocument' \
+curl --location 'https://apic.consubanco.com/csb/dev/dimo-service/validateDimoTransferRules' \
 --header 'Content-Type: application/json' \
 --header 'Accept: application/json' \
 --header 'X-IBM-Client-Id: XXXXXXXXXXXXXXXXX' \
@@ -144,6 +149,5 @@ curl --location 'https://apic.consubanco.com/csb/dev/karalundi-service/loadDocum
 --data 'REPLACE_REQUEST_BODY'
 ```
 ---
-
 
 <!-- DOCUMENTACION TECNICA -->
